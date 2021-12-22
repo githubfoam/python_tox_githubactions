@@ -18,6 +18,7 @@ jobs:
       matrix:
         # python: [2.7, 3.7, 3.8]
         python: ["3.7", "3.8", "3.9"]
+        app: [app1]
     steps:
       - uses: actions/checkout@v2
       - name: "Setup Python"
@@ -28,7 +29,8 @@ jobs:
         run: pip install tox
       - name: "Run Tox"
         # Run tox using the version of Python in `PATH`
-        run: tox -e py
+        # run: tox -e py
+        run: cd ${{ matrix.app }} && tox -e py
 
 # # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-python#using-a-specific-python-version
 #   build-python-tox-ubuntu-2004:
