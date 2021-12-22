@@ -1,2 +1,2 @@
 # python_tox_githubactions
-python tox
+https://tox.wiki/en/latest/
