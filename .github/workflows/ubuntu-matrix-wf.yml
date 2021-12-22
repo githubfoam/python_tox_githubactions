@@ -1,10 +1,10 @@
-name: "python app CI workflow tox ubuntu"
+name: "ubuntu matrix python app CI workflow "
 
 on:
   push:
     branches: [ dev ]
-  # pull_request:
-  #   branches: [ githubactions_powershell ]
+ 
+  
 
 
 jobs:
