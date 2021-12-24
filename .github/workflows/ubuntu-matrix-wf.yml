@@ -2,7 +2,10 @@ name: "ubuntu matrix python app CI workflow "
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ main ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month 
+
  
   
 
@@ -14,10 +17,8 @@ jobs:
   build-python-tox-ubuntu-matrix:
     strategy:
       matrix:
-        # python: [2.7, 3.7, 3.8]
         os: [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
         python: ["3.7", "3.8", "3.9"]
-        # app: [app3] #NOK
         app: [app1]
     name: "Running tests with tox (ubuntu matrix)"
     # runs-on: ubuntu-latest     
@@ -31,8 +32,6 @@ jobs:
       - name: "Install Tox and any other packages"
         run: pip install tox
       - name: "Run Tox"
-        # Run tox using the version of Python in `PATH`
-        # run: tox -e py
         run: cd ${{ matrix.app }} && tox -e py
 
 
